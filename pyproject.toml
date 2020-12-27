@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "hexlet 1 lvl project"
 authors = ["Dobro <matematikaigor@gmail.com>"]
 license = "1488228"
+packages = [
+  { include = "brain_games" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -13,3 +16,6 @@ python = "^3.8"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+brain-games = "brain_games.scripts.brain_games:main"
