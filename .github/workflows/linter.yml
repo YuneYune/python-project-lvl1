@@ -1,4 +1,4 @@
-name: Super-Linter
+name: Linter
 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
@@ -27,7 +27,7 @@ jobs:
         run: |
           pip install poetry
           make install
-          
+
       # Runs Linter action
       - name: Run Linter
         run: make lint
