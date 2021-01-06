@@ -9,7 +9,7 @@ import prompt
 
 
 def define_rules():
-    """Rules of the game."""
+    """Prints rules of the game."""
     print('Answer "yes" if the number is even, otherwise answer "no".')
 
 
@@ -56,10 +56,10 @@ def round(name, amount_of_rounds=3):
         print('Question: {0}'.format(number))
         answer = prompt.string('Your answer: ')
         if answer == is_even(number):
-            print('Correct')
+            print('Correct!')
             return round(name, amount_of_rounds - 1)
         else:
-            message = ("'{0}' is wrong answer ;(. Correct answer was '{1}'. \n"
+            message = ("'{0}' is wrong answer ;(. Correct answer was '{1}'.\n" +
                        "Let's try again, {2}!"
                        ).format(answer, is_even(number), name)
             print(message)
