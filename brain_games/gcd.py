@@ -67,7 +67,8 @@ def game(name, amount_of_rounds=3):
     """
     if amount_of_rounds <= 0:
         return print('Congratulations, {0}!'.format(name))
-    num1, num2 = crypto.randrange(100), crypto.randrange(100)
+    num1 = crypto.randrange(1, 100)
+    num2 = crypto.randrange(1, 100)
     answer = question(num1, num2)
     gcd = find_gcd(num1, num2)
     if answer == gcd:
