@@ -74,7 +74,7 @@ def game(name, amount_of_rounds=3):
         return print('Congratulations, {0}!'.format(name))
     num1, num2 = crypto.randrange(100), crypto.randrange(10)
     operator = crypto.choice(operators_as_str)
-    answer = question(num1, num2, operator)
+    answer = question(num1, operator, num2)
     calculation = calc(num1, operator, num2)
     if answer == calculation:
         print('Correct!')

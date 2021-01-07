@@ -10,7 +10,7 @@ def main():
     print('Welcome to the Brain Games!')
     name = calc.welcome_user()
     calc.define_rules()
-    calc.round(name)
+    calc.game(name)
 
 
 if __name__ == '__main__':
