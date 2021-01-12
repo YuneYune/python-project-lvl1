@@ -34,7 +34,7 @@ def create_progression():
     """
     progression = []
     begin = crypto.randrange(1, 100)
-    step = crypto.randrange(1, 20)
+    step = crypto.randrange(1, 10)
     stop = step * 10 + begin
     for num in range(begin, stop, step):
         progression.append(str(num))
@@ -87,7 +87,8 @@ def game(name, amount_of_rounds=3):
         print('Correct!')
         return game(name, amount_of_rounds - 1)
     else:
-        message = ("'{0}' is wrong answer ;(. Correct answer was '{1}'.\n" +
-                   "Let's try again, {2}!"
-                   ).format(answer, missing_element, name)
-        print(message)
+        print("'{0}' is wrong answer ;(. Correct answer was '{1}'".format(
+            answer, missing_element,
+        ),
+        )
+        print("Let's try again, {0}!".format(name))

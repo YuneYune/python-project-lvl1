@@ -8,10 +8,11 @@ from operator import add, mul, sub
 import prompt
 
 crypto = random.SystemRandom()
-operators = {'+': add,
-             '-': sub,
-             '*': mul,
-             }
+operators = {
+    '+': add,
+    '-': sub,
+    '*': mul,
+}
 
 
 def welcome_user():
@@ -86,7 +87,8 @@ def game(name, amount_of_rounds=3):
         print('Correct!')
         return game(name, amount_of_rounds - 1)
     else:
-        message = ("'{0}' is wrong answer ;(. Correct answer was '{1}'.\n" +
-                   "Let's try again, {2}!"
-                   ).format(answer, calc(num1, operator, num2), name)
-        print(message)
+        print("'{0}' is wrong answer ;(. Correct answer was '{1}'".format(
+            answer, calc(num1, operator, num2),
+        ),
+        )
+        print("Let's try again, {0}!".format(name))
