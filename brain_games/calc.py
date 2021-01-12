@@ -8,7 +8,10 @@ from operator import add, mul, sub
 import prompt
 
 crypto = random.SystemRandom()
-operators_as_str = ['+', '-', '*']
+operators = {'+': add,
+             '-': sub,
+             '*': mul,
+             }
 
 
 def welcome_user():
@@ -27,18 +30,27 @@ def define_rules():
     print('What is the result of the expression?')
 
 
-def question(num1, operator, num2):
-    """Question to the player.
+def create_task():
+    """Create 2 numbers and operator.
+
+    Returns:
+        Returns 2 numbers and operator.
+    """
+    num1, num2 = crypto.randrange(100), crypto.randrange(10)
+    operator = crypto.choice(operators.keys())
+    return (num1, operator, num2)
+
+
+def question(*args):
+    """Ask the question to the player.
 
     Args:
-        num1: first operand (int)
-        operator: operator (str)
-        num2: second operand (int).
+        *args: numbers (int) and/or operator (str).
 
     Returns:
         Returns answer of the player.
     """
-    print('Question: {0} {1} {2}'.format(num1, operator, num2))
+    print('Question: {0}'.format(*args))
     return prompt.string('Your answer: ')
 
 
@@ -53,10 +65,6 @@ def calc(num1, operator, num2):
     Returns:
         Returns result of calc as a string.
     """
-    operators = {'+': add,
-                 '-': sub,
-                 '*': mul,
-                 }
     return str(operators[operator](num1, num2))
 
 
@@ -72,15 +80,13 @@ def game(name, amount_of_rounds=3):
     """
     if amount_of_rounds <= 0:
         return print('Congratulations, {0}!'.format(name))
-    num1, num2 = crypto.randrange(100), crypto.randrange(10)
-    operator = crypto.choice(operators_as_str)
+    (num1, operator, num2) = create_task()
     answer = question(num1, operator, num2)
-    calculation = calc(num1, operator, num2)
-    if answer == calculation:
+    if answer == calc(num1, operator, num2):
         print('Correct!')
         return game(name, amount_of_rounds - 1)
     else:
         message = ("'{0}' is wrong answer ;(. Correct answer was '{1}'.\n" +
                    "Let's try again, {2}!"
-                   ).format(answer, calculation, name)
+                   ).format(answer, calc(num1, operator, num2), name)
         print(message)
