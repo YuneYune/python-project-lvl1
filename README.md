@@ -10,5 +10,5 @@
 [![asciicast](https://asciinema.org/a/PBAwHEAlZcDcoolVU6SHeBLO9.svg)](https://asciinema.org/a/PBAwHEAlZcDcoolVU6SHeBLO9)
 ## "Progression" game - 
 [![asciicast](https://asciinema.org/a/rqmQYVysiPhXcoZL0uSfAQwVk.svg)](https://asciinema.org/a/rqmQYVysiPhXcoZL0uSfAQwVk)
-## "Is prime" game - 
+## "Is prime" game1 - 
 [![asciicast](https://asciinema.org/a/y046rX8JjCCByoPTYrptYdYFw.svg)](https://asciinema.org/a/y046rX8JjCCByoPTYrptYdYFw)
