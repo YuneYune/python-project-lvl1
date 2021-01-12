@@ -7,10 +7,19 @@ license = "1488228"
 packages = [
   { include = "brain_games" },
 ]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Natural Language :: English",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.8",
+]
+repository = "https://github.com/YuneYune/python-project-lvl1"
+
 
 [tool.poetry.dependencies]
 python = "^3.8"
 prompt = "^0.4.1"
+wemake-python-styleguide = "^0.14.1"
 
 [tool.poetry.dev-dependencies]
 wemake-python-styleguide = "^0.14.1"
