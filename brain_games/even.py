@@ -64,7 +64,7 @@ def game(name, amount_of_rounds=3):
     if amount_of_rounds <= 0:
         return print('Congratulations, {0}!'.format(name))
     cryptogen = SystemRandom()
-    number = cryptogen.randrange(100)
+    number = cryptogen.randrange(1, 100)
     answer = question(number)
     if answer == is_even(number):
         print('Correct!')
