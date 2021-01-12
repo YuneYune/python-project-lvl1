@@ -37,7 +37,7 @@ def create_task():
         Returns 2 numbers and operator.
     """
     num1, num2 = crypto.randrange(100), crypto.randrange(10)
-    operator = crypto.choice(operators.keys())
+    operator = crypto.choice(list(operators.keys()))
     return (num1, operator, num2)
 
 
@@ -50,7 +50,7 @@ def question(*args):
     Returns:
         Returns answer of the player.
     """
-    print('Question: {0}'.format(*args))
+    print('Question: {0} {1} {2}'.format(*args))
     return prompt.string('Your answer: ')
 
 
