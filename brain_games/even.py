@@ -8,11 +8,6 @@ from random import SystemRandom
 import prompt
 
 
-def define_rules():
-    """Prints rules of the game."""
-    print('Answer "yes" if the number is even, otherwise answer "no".')
-
-
 def welcome_user():
     """Greeting.
 
@@ -22,6 +17,24 @@ def welcome_user():
     name = prompt.string('May I have your name? ')
     print('Hello, {0}!'.format(name))
     return name
+
+
+def define_rules():
+    """Rules of the game."""
+    print('Answer "yes" if the number is even, otherwise answer "no".')
+
+
+def question(*args):
+    """Ask the question to the player.
+
+    Args:
+        *args: numbers (int) and/or operator (str).
+
+    Returns:
+        Returns answer of the player.
+    """
+    print('Question: {0} '.format(*args))
+    return prompt.string('Your answer: ')
 
 
 def is_even(num):
@@ -38,7 +51,7 @@ def is_even(num):
     return 'yes'
 
 
-def round(name, amount_of_rounds=3):
+def game(name, amount_of_rounds=3):
     """One round of a game.
 
     Args:
@@ -49,17 +62,15 @@ def round(name, amount_of_rounds=3):
         Returns nothing or recursively itself.
     """
     if amount_of_rounds <= 0:
-        print('Congratulations, {0}!'.format(name))
+        return print('Congratulations, {0}!'.format(name))
+    cryptogen = SystemRandom()
+    number = cryptogen.randrange(100)
+    answer = question(number)
+    if answer == is_even(number):
+        print('Correct!')
+        return game(name, amount_of_rounds - 1)
     else:
-        cryptogen = SystemRandom()
-        number = cryptogen.randrange(100)
-        print('Question: {0}'.format(number))
-        answer = prompt.string('Your answer: ')
-        if answer == is_even(number):
-            print('Correct!')
-            return round(name, amount_of_rounds - 1)
-        else:
-            message = ("'{0}' is wrong answer ;(. Correct answer was '{1}'.\n" +
-                       "Let's try again, {2}!"
-                       ).format(answer, is_even(number), name)
-            print(message)
+        message = ("'{0}' is wrong answer ;(. Correct answer was '{1}'.\n" +
+                   "Let's try again, {2}!"
+                   ).format(answer, is_even(number), name)
+        print(message)

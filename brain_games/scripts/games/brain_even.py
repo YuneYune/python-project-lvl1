@@ -10,7 +10,7 @@ def main():
     print('Welcome to the Brain Games!')
     name = even.welcome_user()
     even.define_rules()
-    even.round(name)
+    even.game(name)
 
 
 if __name__ == '__main__':

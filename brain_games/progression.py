@@ -10,11 +10,6 @@ import prompt
 crypto = random.SystemRandom()
 
 
-def define_rules():
-    """Rules of the game."""
-    print('What number is missing in the progression?')
-
-
 def welcome_user():
     """Greeting.
 
@@ -24,6 +19,11 @@ def welcome_user():
     name = prompt.string('May I have your name? ')
     print('Hello, {0}!'.format(name))
     return name
+
+
+def define_rules():
+    """Rules of the game."""
+    print('What number is missing in the progression?')
 
 
 def create_progression():

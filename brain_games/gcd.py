@@ -9,11 +9,6 @@ import prompt
 crypto = random.SystemRandom()
 
 
-def define_rules():
-    """Rules of the game."""
-    print('Find the greatest common divisor of given numbers.')
-
-
 def welcome_user():
     """Greeting.
 
@@ -23,6 +18,11 @@ def welcome_user():
     name = prompt.string('May I have your name? ')
     print('Hello, {0}!'.format(name))
     return name
+
+
+def define_rules():
+    """Rules of the game."""
+    print('Find the greatest common divisor of given numbers.')
 
 
 def find_gcd(num1, num2):
@@ -63,10 +63,10 @@ def question(*args):
         *args: numbers (int) and/or operator (str).
 
     Returns:
-        Returns answer of the player.
+        Returns answer of the player as (int).
     """
-    print('Question: {0} {1}'.format(args[0], args[1]))
-    return prompt.string('Your answer: ')
+    print('Question: {0} {1}'.format(*args))
+    return int(prompt.string('Your answer: '))
 
 
 def game(name, amount_of_rounds=3):
@@ -83,7 +83,7 @@ def game(name, amount_of_rounds=3):
         return print('Congratulations, {0}!'.format(name))
     (first_num, second_num, gcd) = create_task()
     answer = question(first_num, second_num)
-    if int(answer) == gcd:
+    if answer == gcd:
         print('Correct!')
         return game(name, amount_of_rounds - 1)
     else:
