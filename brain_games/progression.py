@@ -4,6 +4,7 @@
 
 import random
 import re
+import sys
 
 import prompt
 
@@ -17,13 +18,13 @@ def welcome_user():
         Returns name of the player
     """
     name = prompt.string('May I have your name? ')
-    print('Hello, {0}!'.format(name))
+    sys.stdout.write('Hello, {0}!\n'.format(name))
     return name
 
 
 def define_rules():
     """Rules of the game."""
-    print('What number is missing in the progression?')
+    sys.stdout.write('What number is missing in the progression?\n')
 
 
 def create_progression():
@@ -55,17 +56,17 @@ def create_task():
 
 
 def question(*args):
-    """Ask the question to the player.
+    r"""Ask the question to the player.
 
     Args:
-        *args: numbers (int) and/or operator (str).
+        args: numbers (int) and/or operator (str).
 
     Returns:
         Returns answer of the player.
     """
-    message_with_symb = 'Question: {0}'.format(*args)
+    message_with_symb = 'Question: {0}\n'.format(*args)
     message = re.sub(r"[\[\,\'\]]", '', message_with_symb)
-    print(message)
+    sys.stdout.write(message)
     return prompt.string('Your answer: ')
 
 
@@ -80,15 +81,13 @@ def game(name, amount_of_rounds=3):
         Returns nothing or recursively itself.
     """
     if amount_of_rounds <= 0:
-        return print('Congratulations, {0}!'.format(name))
+        return sys.stdout.write('Congratulations, {0}!\n'.format(name))
     (progression, missing_element) = create_task()
     answer = question(progression)
     if int(answer) == int(missing_element):
-        print('Correct!')
+        sys.stdout.write('Correct!\n')
         return game(name, amount_of_rounds - 1)
     else:
-        print("'{0}' is wrong answer ;(. Correct answer was '{1}'".format(
-            answer, missing_element,
-        ),
-        )
-        print("Let's try again, {0}!".format(name))
+        message = "'{0}' is wrong answer ;(. Correct answer was '{1}'\n"
+        sys.stdout.write(message.format(answer, missing_element))
+        sys.stdout.write("Let's try again, {0}!\n".format(name))

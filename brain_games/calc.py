@@ -3,6 +3,7 @@
 """Even commands."""
 
 import random
+import sys
 from operator import add, mul, sub
 
 import prompt
@@ -22,13 +23,13 @@ def welcome_user():
         Returns name of the player
     """
     name = prompt.string('May I have your name? ')
-    print('Hello, {0}!'.format(name))
+    sys.stdout.write('Hello, {0}!\n'.format(name))
     return name
 
 
 def define_rules():
     """Rules of the game."""
-    print('What is the result of the expression?')
+    sys.stdout.write('What is the result of the expression?\n')
 
 
 def create_task():
@@ -46,12 +47,12 @@ def question(*args):
     """Ask the question to the player.
 
     Args:
-        *args: numbers (int) and/or operator (str).
+        args: numbers (int) and/or operator (str).
 
     Returns:
         Returns answer of the player.
     """
-    print('Question: {0} {1} {2}'.format(*args))
+    sys.stdout.write('Question: {0} {1} {2}\n'.format(*args))
     return prompt.string('Your answer: ')
 
 
@@ -80,15 +81,13 @@ def game(name, amount_of_rounds=3):
         Returns nothing or recursively itself.
     """
     if amount_of_rounds <= 0:
-        return print('Congratulations, {0}!'.format(name))
+        return sys.stdout.write('Congratulations, {0}!\n'.format(name))
     (num1, operator, num2) = create_task()
     answer = question(num1, operator, num2)
     if answer == calc(num1, operator, num2):
-        print('Correct!')
+        sys.stdout.write('Correct!\n')
         return game(name, amount_of_rounds - 1)
     else:
-        print("'{0}' is wrong answer ;(. Correct answer was '{1}'".format(
-            answer, calc(num1, operator, num2),
-        ),
-        )
-        print("Let's try again, {0}!".format(name))
+        message = "'{0}' is wrong answer ;(. Correct answer was '{1}'\n"
+        sys.stdout.write(message.format(answer, calc(num1, operator, num2)))
+        sys.stdout.write("Let's try again, {0}!\n".format(name))

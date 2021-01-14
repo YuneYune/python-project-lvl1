@@ -2,12 +2,14 @@
 
 """Brain game - calculate the numbers."""
 
+import sys
+
 from brain_games import gcd
 
 
 def main():
     """Algorithm."""
-    print('Welcome to the Brain Games!')
+    sys.stdout.write('Welcome to the Brain Games!\n')
     name = gcd.welcome_user()
     gcd.define_rules()
     gcd.game(name)

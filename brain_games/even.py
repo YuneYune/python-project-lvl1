@@ -2,7 +2,7 @@
 
 """Even commands."""
 
-
+import sys
 from random import SystemRandom
 
 import prompt
@@ -15,25 +15,26 @@ def welcome_user():
         Returns name of the player
     """
     name = prompt.string('May I have your name? ')
-    print('Hello, {0}!'.format(name))
+    sys.stdout.write('Hello, {0}!\n'.format(name))
     return name
 
 
 def define_rules():
     """Rules of the game."""
-    print('Answer "yes" if the number is even, otherwise answer "no".')
+    rules = 'Answer "yes" if the number is even, otherwise answer "no".\n'
+    sys.stdout.write(rules)
 
 
 def question(*args):
     """Ask the question to the player.
 
     Args:
-        *args: numbers (int) and/or operator (str).
+        args: numbers (int) and/or operator (str).
 
     Returns:
         Returns answer of the player.
     """
-    print('Question: {0} '.format(*args))
+    sys.stdout.write('Question: {0} \n'.format(*args))
     return prompt.string('Your answer: ')
 
 
@@ -62,16 +63,17 @@ def game(name, amount_of_rounds=3):
         Returns nothing or recursively itself.
     """
     if amount_of_rounds <= 0:
-        return print('Congratulations, {0}!'.format(name))
+        return sys.stdout.write('Congratulations, {0}!\n'.format(name))
     cryptogen = SystemRandom()
     number = cryptogen.randrange(1, 100)
     answer = question(number)
     if answer == is_even(number):
-        print('Correct!')
+        sys.stdout.write('Correct!\n')
         return game(name, amount_of_rounds - 1)
     else:
-        print("'{0}' is wrong answer ;(. Correct answer was '{1}'".format(
+        message = "'{0}' is wrong answer ;(. Correct answer was '{1}'\n"
+        sys.stdout.write(message.format(
             answer, is_even(number),
         ),
         )
-        print("Let's try again, {0}!".format(name))
+        sys.stdout.write("Let's try again, {0}!\n".format(name))

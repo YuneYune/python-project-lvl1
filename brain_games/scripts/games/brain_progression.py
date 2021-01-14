@@ -2,12 +2,14 @@
 
 """Brain game - add missing element of progression."""
 
+import sys
+
 from brain_games import progression
 
 
 def main():
     """Algorithm."""
-    print('Welcome to the Brain Games!')
+    sys.stdout.write('Welcome to the Brain Games!\n')
     name = progression.welcome_user()
     progression.define_rules()
     progression.game(name)

@@ -2,6 +2,7 @@
 
 """Cli commands."""
 
+import sys
 
 import prompt
 
@@ -9,4 +10,4 @@ import prompt
 def welcome_user():
     """Greeting."""
     name = prompt.string('May I have your name? ')
-    print('Hello, {0}!'.format(name))
+    sys.stdout.write('Hello, {0}!\n'.format(name))
